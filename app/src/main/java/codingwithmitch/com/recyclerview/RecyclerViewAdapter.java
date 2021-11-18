@@ -37,12 +37,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
+        View view = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.layout_listitem, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView")
+    final int position){
         Log.d(TAG, "onBindViewHolder: called.");
 
         Glide.with(mContext)
@@ -57,10 +60,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             Toast.makeText(mContext, mImageNames.get(position), Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(mContext, GalleryActivity.class);
+            Intent intent = new Intent(this.mContext, GalleryActivity.class);
             intent.putExtra("image_url", mImages.get(position));
             intent.putExtra("image_name", mImageNames.get(position));
-            mContext.startActivity(intent);
+            this.mContext.startActivity(intent);
         });
     }
 
